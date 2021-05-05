@@ -25,28 +25,31 @@
                 Rock, Paper, Scissors
             </h2>
 
-            <p>
-            <label> Rock
+        <div id="choices">
+            <label> 
+                <h3>Rock</h3><br>
                 <input name="rps" type="radio" value="rock"/>
-                <img src="./assets/rock-gif.gif"/>
-            </label>
-            <label> Paper
+                <img id="rps-pics" src="./assets/rock-gif.gif"/>
+            </label><br>
+            <label> 
+                <h3>Paper</h3><br>
                 <input name="rps" type="radio" value="paper"/>
-                <img src="./assets/papergif.gif"/>
-            </label>
-            <label> Scissors
+                <img id="rps-pics" src="./assets/papergif.gif"/>
+            </label><br>
+            <label> 
+                <h3>Scissors</h3><br>
                 <input name="rps" type="radio" value="scissors"/>
-                <img src="./assets/gob-scissors.gif"/>
+                <img id="rps-pics" src="./assets/gob-scissors.gif"/>
             </label><br>
             <button id="submit-button">Let's go!</button>
-            </p>
-            <div id="wins"></div>
-            <div id="losses"></div>
+        </div>
+
+            <div id="throws-and-wins"></div>
 
         </section>
     </main>
     <footer>
-        <div class="copy gutter-right">&copy; 2020 Alchemy Code Lab</div>
+        <div class="copy gutter-right">&copy; 2020 Can you smell what The Rock is cooking</div>
     </footer>
 
     <script type="module" src="./app.js"></script>

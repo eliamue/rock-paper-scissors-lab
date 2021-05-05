@@ -1,10 +1,9 @@
 // import functions and 
-import function evaluateGuess
+import { rpsThrow, rpsCompare } from './utils.js';
+
 //grab DOM elements
 const button = document.getElementById('submit-button');
-const currentResultDiv = document.getElementById('rps-button');
-const winsDisplay = document.getElementById('wins');
-const lossesDisplay = document.getElementById('losses');
+const totalThrowsAndWinsDisplay = document.getElementById('throws-and-wins');
 
 // initialize state
 let totalThrows = 0;
@@ -12,22 +11,18 @@ let totalWins = 0;
 
 // set event listeners to update state and DOM
 button.addEventListener('click', () => {
-
-    const randomNumber = Math.random();
-
-    let actualFlip = 'rock';
-
-    if (randomNumber >= 0.75) {
-
-        let actualFlip = 'paper';
-
-    } else if (randomNumber <= 0.25){
-
-        let actualFlip = 'scissors';
-
+    const rpsSelection = document.querySelector('input:checked');
+    const userThrow = rpsSelection.value;
+    let randomNumber = Math.random();
+    if (rpsCompare(userThrow, rpsThrow(randomNumber)) === 'win') {
+        totalThrows ++;
+        totalWins ++;
+        totalThrowsAndWinsDisplay.textContent = `WINNER! Yo you won like ${totalWins} out of ${totalThrows} times! Congrats, mate!`;
+    } else if (rpsCompare(userThrow, rpsThrow(randomNumber)) === 'draw') {
+        totalThrows ++;
+        totalThrowsAndWinsDisplay.textContent = `Aw, that's was a draw. You've still won ${totalWins} out of ${totalThrows} times, so try not to be terrible next time.`;
+    } else if (rpsCompare(userThrow, rpsThrow(randomNumber)) === 'lose') {
+        totalThrows ++;
+        totalThrowsAndWinsDisplay.textContent = `Looooooser, you lost. Seriously, just ${totalWins} wins out of ${totalThrows} games? Make better choices.`;
     }
-    const selectedRadio = document.querySelector('input:checked');
-    console.log(selectedRadio.value);
-
-    const userGuess = selectedRadio.value;
 });

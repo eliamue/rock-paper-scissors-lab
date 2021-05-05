@@ -1,17 +1,22 @@
-export function rockPaperScissors(userThrow, computerThrow) {
+export function rpsThrow(randoNumber) {
+    if (randoNumber >= 0.75) {
+        return 'paper';
+    } else if (randoNumber <= 0.25){
+        return 'scissors';
+    } else {
+        return 'rock';
+    }
+}
+export function rpsCompare(userThrow, computerThrow) {
     if (
         (userThrow === 'rock' && computerThrow === 'scissors')
         || (userThrow === 'scissors' && computerThrow === 'paper')
         || (userThrow === 'paper' && computerThrow === 'rock')
     ) {
-        return 'userWin';
+        return 'win';
     } else if (userThrow === computerThrow) {
         return 'draw';
     } else {
-        return 'computerWin';
+        return 'lose';
     }
 }
-// const rockButton = document.getElementById('rock-button');
-// const paperButton = document.getElementById('paper-button');
-// const scissorsButton = document.getElementById('scissors-button');
-// const playButton = document.getElementById('play-button');
