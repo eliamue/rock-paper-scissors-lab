@@ -5,12 +5,14 @@ import { rpsThrow, rpsCompare } from './utils.js';
 const button = document.getElementById('submit-button');
 const totalThrowsAndWinsDisplay = document.getElementById('throws-and-wins');
 const reset = document.getElementById('reset-button');
+const resetsDisplay = document.getElementById('resets-display');
 
 // initialize state
 let totalThrows = 0;
 let totalWins = 0;
 let totalLosses = 0;
 let totalDraws = 0;
+let totalResets = 0;
 
 // set event listeners to update state and DOM
 button.addEventListener('click', () => {
@@ -22,11 +24,13 @@ button.addEventListener('click', () => {
         totalWins ++;
         totalThrowsAndWinsDisplay.style.display = 'block';
         totalThrowsAndWinsDisplay.textContent = `WINNER! Yo you won like ${totalWins} out of ${totalThrows} times! Congrats, mate!`;
+        reset.style.display = 'none';
     } else if (rpsCompare(userThrow, rpsThrow(randomNumber)) === 'draw') {
         totalThrows ++;
         totalDraws ++;
         totalThrowsAndWinsDisplay.style.display = 'block';
         totalThrowsAndWinsDisplay.textContent = `Aw, that's was a draw. You've had ${totalDraws} draws and still won ${totalWins} out of ${totalThrows} times, so try not to be terrible next time.`;
+        reset.style.display = 'none';
     } else if (rpsCompare(userThrow, rpsThrow(randomNumber)) === 'lose') {
         totalThrows ++;
         totalLosses ++;
@@ -41,5 +45,7 @@ reset.addEventListener('click', () => {
     totalDraws = 0;
     totalWins = 0;
     totalLosses = 0;
+    totalResets++;
     totalThrowsAndWinsDisplay.style.display = 'none';
+    resetsDisplay.textContent = `You have reset ${totalResets} times.`;
 });
